@@ -11,11 +11,11 @@ const mainSaveCredentials = credentials => {
     return keytar.setPassword(CONSTANTS.APP, credentials.username, credentials.password);
 };
 
-const mainDeleteCredentials = username => {
+const  mainDeleteCredentials = username => {
     return keytar.deletePassword(CONSTANTS.APP, username);
 };
 
-const handleCredentialsEvents = () => {
+ const  handleCredentialsEvents = () => {
     ipcMain.on(EVENTS.GET_LOCAL_CREDENTIALS, (event, username) => {
         mainGetLocalCredentials(username).then(credentials => {
             event.sender.send(EVENTS.GET_LOCAL_CREDENTIALS_REPLY, JSON.stringify(credentials));
